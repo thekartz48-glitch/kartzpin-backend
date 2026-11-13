@@ -1,33 +1,99 @@
-# KARTZPIN DOWNLOADER — Backend starter
 
-This is a FastAPI backend starter for the KARTZPIN DOWNLOADER frontend.
+# KARTZPIN DOWNLOADER — Backend
 
-## Included
-- `GET /` — service information
-- `GET /api/health` — health check
-- `POST /api/resolve` — validated Pinterest URL integration point
-- CORS configured for the GitHub Pages origin
-- Render deployment configuration
+Python FastAPI backend for KARTZPIN DOWNLOADER.
 
-## Important
-The `/api/resolve` endpoint intentionally returns HTTP 501 until an official or otherwise authorized content provider is integrated. This starter does not scrape Pinterest, bypass login/private-content restrictions, or fetch copyrighted media without permission.
+## About
 
-## Run locally
+KARTZPIN DOWNLOADER is a backend starter project designed to support processing publicly accessible Pinterest content that the user owns or has permission to download.
+
+## Technology Stack
+
+- Python
+- FastAPI
+- Uvicorn
+- Pydantic
+
+## Features
+
+- FastAPI application
+- API health check
+- Pinterest URL validation
+- HTTPS-only URL validation
+- CORS configuration
+- API documentation
+- Authorized content processing integration point
+
+## API Endpoints
+
+### 1. Home
+
+GET /
+
+Returns backend service information.
+
+### 2. Health Check
+
+GET /api/health
+
+Checks whether the backend is running.
+
+### 3. Resolve Pinterest URL
+
+POST /api/resolve
+
+Accepts a Pinterest URL.
+
+Note: Content processing is not connected yet. An authorized provider or official API must be configured before downloading is supported.
+
+## Installation
+
+Clone the repository:
+
 ```bash
-python -m venv .venv
-# Windows: .venv\\Scripts\\activate
-# macOS/Linux: source .venv/bin/activate
+git clone YOUR_REPOSITORY_URL
+cd YOUR_REPOSITORY_FOLDER
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
+
+## Run Locally
+
+```bash
 uvicorn main:app --reload
 ```
 
-Open `http://127.0.0.1:8000/docs` to inspect the API.
+Open API documentation:
 
-## Deploy
-1. Upload these files to a NEW GitHub repository named `kartzpin-backend`.
-2. Connect that repository to a Python hosting provider such as Render.
-3. The included `render.yaml` provides the build and start commands.
-4. After deployment, test `/api/health`.
-5. Set the real backend URL in the frontend JavaScript only after deployment is successful.
+http://127.0.0.1:8000/docs
 
-Do not put API keys or secrets in GitHub files.
+## Environment Variables
+
+FRONTEND_ORIGINS
+
+Set this variable to your frontend website origin.
+
+Default:
+
+https://thekartz48-glitch.github.io
+
+## Deployment
+
+This project includes a render.yaml configuration for deployment on Render.
+
+## Responsible Use
+
+- Only process content you own or are authorized to download.
+- Do not access private Pinterest content.
+- Do not bypass authentication or access controls.
+- Respect copyright and platform terms.
+
+## Project
+
+KARTZPIN DOWNLOADER
+
+Backend Version: 1.0.0
