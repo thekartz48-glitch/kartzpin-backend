@@ -1,9 +1,10 @@
+
 services:
   - type: web
-    name: kartzpin-backend
+    name: kartzpin-downloader-api
     runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    envVars:
-      - key: FRONTEND_ORIGINS
-        value: https://thekartz48-glitch.github.io
+    healthCheckPath: /api/health
+    
